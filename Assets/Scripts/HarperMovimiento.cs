@@ -4,17 +4,21 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D))]
 public class HarperMovimiento : MonoBehaviour
 {
-    [Header("Movimiento")]
-    public float velocidad = 5f;
-    // Límites del piso (ajústalos en el Inspector)
+    [Header("Movimiento Base")]
+    public float velocidadMax = 18f; // Solo necesitas la máxima, la mínima siempre es 0
     public float xMin = 2f, xMax = 28f;
     public float yMin = 0.3f, yMax = 5.5f;
 
+    [Header("Ajustes de responsiveness")]
+    // Valores más grandes porque ahora sí los multiplicaremos por delta time
+    public float aceleracion = 190f; 
+    public float desaceleracion = 220f; 
+
     Rigidbody2D rb;
     SpriteRenderer sr;
-    Vector2 dir;
+    Vector2 dirInput;
+    Vector2 velocidadActual; // Guarda el vector de la inercia actual
 
-    // Hacia dónde mira Harper: 1 = derecha, -1 = izquierda
     public int Direccion => (sr != null && sr.flipX) ? -1 : 1;
 
     void Awake()
@@ -23,7 +27,6 @@ public class HarperMovimiento : MonoBehaviour
         rb.gravityScale = 0;
         rb.freezeRotation = true;
 
-        // Busca el Sprite Renderer en Harper o en un hijo
         sr = GetComponentInChildren<SpriteRenderer>();
         if (sr == null) Debug.LogWarning("Harper no tiene SpriteRenderer");
     }
@@ -38,17 +41,32 @@ public class HarperMovimiento : MonoBehaviour
         if (k.dKey.isPressed || k.rightArrowKey.isPressed) x += 1;
         if (k.sKey.isPressed || k.downArrowKey.isPressed)  y -= 1;
         if (k.wKey.isPressed || k.upArrowKey.isPressed)    y += 1;
-        dir = new Vector2(x, y).normalized;
+        
+        dirInput = new Vector2(x, y).normalized;
 
-        // Harper mira a la derecha por defecto
         if (x != 0 && sr != null) sr.flipX = x < 0;
     }
 
     void FixedUpdate()
-    {
-        Vector2 p = rb.position + dir * velocidad * Time.fixedDeltaTime;
+    {   
+        // 1. Calculamos hacia dónde queremos ir y a qué velocidad final
+        Vector2 velocidadObjetivo = dirInput * velocidadMax;
+
+        // 2. Definimos si estamos acelerando (hay input) o frenando (no hay input)
+        float tasaActual = (dirInput.magnitude > 0) ? aceleracion : desaceleracion;
+
+        // 3. Transicionamos suavemente la velocidad actual hacia el objetivo
+        velocidadActual = Vector2.MoveTowards(
+            velocidadActual, 
+            velocidadObjetivo, 
+            tasaActual * Time.fixedDeltaTime
+        );
+
+        // 4. Aplicamos el movimiento usando la inercia calculada
+        Vector2 p = rb.position + velocidadActual * Time.fixedDeltaTime;
         p.x = Mathf.Clamp(p.x, xMin, xMax);
         p.y = Mathf.Clamp(p.y, yMin, yMax);
+        
         rb.MovePosition(p);
     }
 }
