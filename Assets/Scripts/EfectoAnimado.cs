@@ -10,6 +10,7 @@ public class EfectoAnimado : MonoBehaviour
     public float duracionTotal = 0f;   // 0 = usa los fps; si no, dura este tiempo en segundos
     public float crecimiento = 0f;     // 0 = tamaño fijo; 12 = termina 12 veces más grande
     public bool desvanecer = false;    // se vuelve transparente al final
+    public bool repetirAnimacion = false;   // las imágenes se repiten en bucle (la bola de disco girando)
 
     [Header("Modo proyectil (solo para el golpe del bajo)")]
     public bool esProyectil = false;
@@ -78,7 +79,9 @@ public class EfectoAnimado : MonoBehaviour
         if (t >= dur) { Destroy(gameObject); return; }
 
         float progreso = t / dur;
-        int i = Mathf.Min((int)(progreso * frames.Length), frames.Length - 1);
+        int i = repetirAnimacion
+            ? (int)(t * fps) % frames.Length                                  // gira y gira
+            : Mathf.Min((int)(progreso * frames.Length), frames.Length - 1);  // pasa una sola vez
         sr.sprite = frames[i];
 
         if (crecimiento > 0f)

@@ -43,6 +43,36 @@ public class VidaHarper : MonoBehaviour
         return true;
     }
 
+    // Poder del Fandom: recupera vida
+    public void Curar(int cantidad) => Curar(cantidad, new Color(0.75f, 0.55f, 1f));   // destello morado
+
+    // El corazón de los comodines usa un destello rosado
+    public void Curar(int cantidad, Color colorBrillo)
+    {
+        if (muerta) return;
+        Actual = Mathf.Min(vidaMax, Actual + cantidad);
+        StartCoroutine(Brillo(colorBrillo, 0.8f));
+    }
+
+    // Escudo de Estrellas: no le pasa nada por unos segundos
+    public void HacerInvencible(float segundos)
+    {
+        if (muerta) return;
+        hasta = Mathf.Max(hasta, Time.time + segundos);
+        StartCoroutine(Brillo(new Color(1f, 0.85f, 0.3f), segundos));  // brilla dorado
+    }
+
+    IEnumerator Brillo(Color color, float segundos)
+    {
+        float fin = Time.time + segundos;
+        while (Time.time < fin)
+        {
+            if (sr != null) sr.color = Color.Lerp(Color.white, color, (Mathf.Sin(Time.time * 12f) + 1f) * 0.5f);
+            yield return null;
+        }
+        if (sr != null && !muerta) sr.color = Color.white;
+    }
+
     IEnumerator Parpadeo()
     {
         float fin = Time.time + invulnerable;

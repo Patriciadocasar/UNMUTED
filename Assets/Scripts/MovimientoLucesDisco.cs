@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
 [RequireComponent(typeof(Light2D))]
-public class MovimientoLuzDisco : MonoBehaviour
+public class MovimientoLucesDisco : MonoBehaviour
 {
     [Header("Movimiento")]
     [SerializeField] private float anguloBase = 180f; // 180 = apunta hacia abajo
@@ -16,6 +16,10 @@ public class MovimientoLuzDisco : MonoBehaviour
     [SerializeField] private float velocidadColor = 0.3f;
 
     private Light2D luz;
+    private float tiempo;
+
+    // El poder Bola de Disco lo sube para que los focos se muevan más rápido
+    public static float multiplicadorFiesta = 1f;
 
     void Awake()
     {
@@ -24,7 +28,8 @@ public class MovimientoLuzDisco : MonoBehaviour
 
     void Update()
     {
-        float t = Time.time;
+        tiempo += Time.deltaTime * multiplicadorFiesta;
+        float t = tiempo;
 
         float angulo = anguloBase + Mathf.Sin(t * velocidad + fase) * amplitud;
         transform.localRotation = Quaternion.Euler(0f, 0f, angulo);
