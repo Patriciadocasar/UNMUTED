@@ -9989,6 +9989,9 @@ GameObject:
   - component: {fileID: 2116723923}
   - component: {fileID: 2116723926}
   - component: {fileID: 2116723925}
+  - component: {fileID: 2116723928}
+  - component: {fileID: 2116723927}
+  - component: {fileID: 2116723929}
   m_Layer: 0
   m_Name: Harper2
   m_TagString: Untagged
@@ -10187,6 +10190,8 @@ MonoBehaviour:
   alturaEfecto: 3.5
   sonidoGolpe: {fileID: 8300000, guid: 64ba25792ae32984cb63574c2ffde1f4, type: 3}
   sonidoMuerte: {fileID: 8300000, guid: 1ce30df3b442ca04a9a57173921b3350, type: 3}
+  duracionHerida: 0.3
+  quietaMientrasHerida: 1
 --- !u!61 &2116723926
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10233,6 +10238,77 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.6699731, y: 6.616148}
   m_EdgeRadius: 0
+--- !u!114 &2116723927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116723918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff4316dc889daa740acdc7b4b7ee2cfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HarperAnimacion
+  idle:
+  - {fileID: 6937803220914812674, guid: 9e695e25e2ce37a408b72f31dc5834ba, type: 3}
+  - {fileID: -3476880532879555175, guid: 9e695e25e2ce37a408b72f31dc5834ba, type: 3}
+  - {fileID: -2966846137520063066, guid: 9e695e25e2ce37a408b72f31dc5834ba, type: 3}
+  - {fileID: 4195122746861908294, guid: 9e695e25e2ce37a408b72f31dc5834ba, type: 3}
+  caminar:
+  - {fileID: 776522490974083275, guid: 9e695e25e2ce37a408b72f31dc5834ba, type: 3}
+  - {fileID: 7189925401812035184, guid: 9e695e25e2ce37a408b72f31dc5834ba, type: 3}
+  - {fileID: 1933393276168340112, guid: 9e695e25e2ce37a408b72f31dc5834ba, type: 3}
+  - {fileID: -1423723864353615246, guid: 9e695e25e2ce37a408b72f31dc5834ba, type: 3}
+  - {fileID: -538082273884093930, guid: 9e695e25e2ce37a408b72f31dc5834ba, type: 3}
+  - {fileID: 5648242188924500116, guid: 9e695e25e2ce37a408b72f31dc5834ba, type: 3}
+  - {fileID: 4450575740121172853, guid: 9e695e25e2ce37a408b72f31dc5834ba, type: 3}
+  - {fileID: 3752482955380480817, guid: 9e695e25e2ce37a408b72f31dc5834ba, type: 3}
+  agacharse: {fileID: -3551928830240490343, guid: 9e695e25e2ce37a408b72f31dc5834ba, type: 3}
+  agachada:
+  - {fileID: 122188955869486816, guid: 9e695e25e2ce37a408b72f31dc5834ba, type: 3}
+  - {fileID: 8454879995731473360, guid: 9e695e25e2ce37a408b72f31dc5834ba, type: 3}
+  herida: {fileID: -5149570960624749442, guid: 9e695e25e2ce37a408b72f31dc5834ba, type: 3}
+  fpsIdle: 4
+  fpsCaminar: 12
+  fpsAgachada: 8
+  ajustarAVelocidad: 1
+  umbralMovimiento: 0.5
+--- !u!114 &2116723928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116723918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d9bd3260b855b04b800febeff65abc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HarperMovimiento
+  velocidadMax: 18
+  xMin: 2
+  xMax: 28
+  yMin: 0.3
+  yMax: 5.5
+  aceleracion: 190
+  desaceleracion: 220
+--- !u!114 &2116723929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116723918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46bae446f11991f42bdbb5d6431fb6ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HarperAgachar
+  tecla: 1
+  teclaAlterna: 17
+  duracionTransicion: 0.06
+  alturaAgachada: 6.4
 --- !u!1 &2145626149
 GameObject:
   m_ObjectHideFlags: 0
