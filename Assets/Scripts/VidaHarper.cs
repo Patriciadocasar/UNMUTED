@@ -23,9 +23,10 @@ public class VidaHarper : MonoBehaviour
         sr = GetComponentInChildren<SpriteRenderer>();
     }
 
-    public void RecibirDano(int d)
+    // Devuelve true si el golpe sí le quitó vida
+    public bool RecibirDano(int d)
     {
-        if (muerta || Time.time < hasta) return;
+        if (muerta || Time.time < hasta) return false;   // invulnerable: el golpe no cuenta
         Actual = Mathf.Max(0, Actual - d);
         hasta = Time.time + invulnerable;
 
@@ -35,6 +36,7 @@ public class VidaHarper : MonoBehaviour
 
         if (Actual <= 0) StartCoroutine(Morir());
         else StartCoroutine(Parpadeo());
+        return true;
     }
 
     IEnumerator Parpadeo()
