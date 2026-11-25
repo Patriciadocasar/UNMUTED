@@ -710,8 +710,21 @@ MonoBehaviour:
   escenaSiguiente: 
   esperaFinal: 2.5
   panelAbajo: 1
+  anchoPanel: 0.88
+  altoPanel: 0.19
+  margenBorde: 0.035
+  fuente: {fileID: 0}
+  tamanoTitulo: 42
+  tamanoTexto: 30
+  tamanoAyuda: 22
+  colorNegro: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
+  colorBorde: {r: 0.9490196, g: 0.6901961, b: 0.11764706, a: 1}
+  colorFondo: {r: 0.16862746, g: 0.09019608, b: 0.4, a: 1}
+  colorFranja: {r: 0.9098039, g: 0.44313726, b: 0.62352943, a: 1}
+  colorInsignia: {r: 0.7882353, g: 0.22745098, b: 0.5254902, a: 1}
   colorTitulo: {r: 1, g: 0.85, b: 0.2, a: 1}
   colorTexto: {r: 1, g: 1, b: 1, a: 1}
+  colorAyuda: {r: 0.7019608, g: 0.6156863, b: 0.85882354, a: 1}
   colorListo: {r: 0.5, g: 1, b: 0.6, a: 1}
   sonidoPasoCompletado: {fileID: 0}
 --- !u!4 &310343756
@@ -9612,7 +9625,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6116059656706494344, guid: 0a7b6d04b4779ba4e9345fc86f7cb7e3, type: 3}
       propertyPath: volumenMusica
-      value: 0.41
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6116059656706494344, guid: 0a7b6d04b4779ba4e9345fc86f7cb7e3, type: 3}
+      propertyPath: volumenEfectos
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8925564938693491613, guid: 0a7b6d04b4779ba4e9345fc86f7cb7e3, type: 3}
       propertyPath: m_Name

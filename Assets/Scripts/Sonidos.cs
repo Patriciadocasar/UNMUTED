@@ -10,6 +10,11 @@ public class Sonidos : MonoBehaviour
     public AudioClip cancion;
     [Range(0f, 1f)] public float volumenMusica = 0.4f;
 
+    [Tooltip("Segundos que tarda la música en llegar al volumen final. 0 = sin fundido")]
+    public float duracionFundido = 6f;
+    [Range(0f, 1f)] public float volumenInicial = 0.03f;
+    float tiempoMusica;
+
     [Header("Efectos")]
     [Range(0f, 1f)] public float volumenEfectos = 0.8f;
 
@@ -32,13 +37,15 @@ public class Sonidos : MonoBehaviour
         if (cancion != null)
         {
             musica.clip = cancion;
+            musica.volume = volumenInicial;
             musica.Play();
         }
     }
-
     void Update()
     {
-        musica.volume = volumenMusica;   // así puedes moverle el volumen mientras juegas
+        tiempoMusica += Time.unscaledDeltaTime;   // sigue subiendo aunque el juego esté pausado
+        float t = duracionFundido <= 0f ? 1f : Mathf.Clamp01(tiempoMusica / duracionFundido);
+        musica.volume = Mathf.Lerp(volumenInicial, volumenMusica, Mathf.SmoothStep(0f, 1f, t));
     }
 
     // Los otros scripts llaman a esto: Sonidos.Tocar(miSonido);
