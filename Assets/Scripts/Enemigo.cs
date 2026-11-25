@@ -33,6 +33,15 @@ public class Enemigo : MonoBehaviour
     public float duracionGolpe = 0.25f;
     public GameObject prefabMuerte;
 
+    [Header("Comodines que puede soltar al morir")]
+    public GameObject[] comodines;                 // arrastra aquí el corazón y/o la nota
+    [Range(0f, 1f)] public float probabilidadComodin = 0.3f;   // 0.3 = 30% de las veces
+
+    [Header("Sonidos")]
+    public AudioClip sonidoDisparo;      // cuando dispara
+    public AudioClip sonidoGolpe;        // cuando Harper le pega
+    public AudioClip sonidoMuerte;       // cuando explota
+
     Rigidbody2D rb;
     SpriteRenderer sr;
     Sprite spriteNormal;
@@ -40,6 +49,20 @@ public class Enemigo : MonoBehaviour
     Vector2 mover;
     int dirHacia = -1;
     float proximoDisparo, finAturdido;
+
+    [Header("Baile (poder Bola de Disco)")]
+    public float multiplicadorDanoBailando = 2f;   // daño extra mientras baila
+    float bailandoHasta;
+    bool estabaBailando;
+    public bool Bailando => Time.time < bailandoHasta;
+
+    // Lo llama el poder Bola de Disco: el robot queda hipnotizado bailando
+    public void Hipnotizar(float segundos)
+    {
+        bailandoHasta = Time.time + segundos;
+        finAturdido = Mathf.Max(finAturdido, bailandoHasta);
+        EstrellasMareo.Crear(transform, sr, segundos);   // estrellitas girando sobre la cabeza
+    }
     Coroutine reaccion;
 
     void Awake()
@@ -54,7 +77,7 @@ public class Enemigo : MonoBehaviour
 
     void Start()
     {
-        var v = FindFirstObjectByType<VidaHarper>();
+        var v = FindAnyObjectByType<VidaHarper>();
         distanciaDisparo = Random.Range(distanciaMin, distanciaMax);
         Debug.Log("Robot empieza con vida: " + vida);
         if (v != null) harper = v.transform;
@@ -70,6 +93,19 @@ public class Enemigo : MonoBehaviour
         float dy = harper.position.y + ajusteAltura - transform.position.y;
         dirHacia = dx >= 0f ? 1 : -1;
         if (sr != null) sr.flipX = miraIzquierdaPorDefecto ? dirHacia > 0 : dirHacia < 0;
+
+        // Bailando: se voltea de un lado a otro y cambia de colores
+        if (Bailando)
+        {
+            estabaBailando = true;
+            if (sr != null)
+            {
+                sr.flipX = ((int)(Time.time * 4f)) % 2 == 0;
+                sr.color = Color.HSVToRGB((Time.time * 0.8f) % 1f, 0.45f, 1f);
+            }
+            return;
+        }
+        if (estabaBailando) { estabaBailando = false; if (sr != null) sr.color = Color.white; }
 
         if (Time.time < finAturdido) return;   // aturdido: no se mueve ni dispara
 
@@ -97,6 +133,7 @@ public class Enemigo : MonoBehaviour
         proximoDisparo = Time.time + cadencia;
         distanciaDisparo = Random.Range(distanciaMin, distanciaMax);   // la próxima vez, otra distancia
         if (prefabBala == null) { Debug.LogWarning("Enemigo: falta Prefab Bala"); return; }
+        Sonidos.Tocar(sonidoDisparo);
 
         Vector3 pos = transform.position +
             new Vector3(dirHacia * Mathf.Abs(salidaBala.x), salidaBala.y, 0f);
@@ -107,11 +144,13 @@ public class Enemigo : MonoBehaviour
 
     public void RecibirDano(int d)
     {
+        if (Bailando) d = Mathf.RoundToInt(d * multiplicadorDanoBailando);
         vida -= d;
         Debug.Log("Robot recibió " + d + " de daño. Le queda: " + vida);
         if (vida <= 0) { Morir(); return; }
+        Sonidos.Tocar(sonidoGolpe);
 
-        finAturdido = Time.time + duracionGolpe * 2f;
+        finAturdido = Mathf.Max(finAturdido, Time.time + duracionGolpe * 2f);
         if (reaccion != null) StopCoroutine(reaccion);
         reaccion = StartCoroutine(Reaccion());
     }
@@ -137,9 +176,21 @@ public class Enemigo : MonoBehaviour
 
     void Morir()
     {
+        Sonidos.Tocar(sonidoMuerte);
+        SoltarComodin();
         if (prefabMuerte != null)
             Instantiate(prefabMuerte, transform.position + Vector3.up * 0.5f, Quaternion.identity);
         Destroy(gameObject);
+    }
+
+    void SoltarComodin()
+    {
+        if (comodines == null || comodines.Length == 0) return;
+        if (Random.value > probabilidadComodin) return;
+        var elegido = comodines[Random.Range(0, comodines.Length)];
+        if (elegido == null) return;
+        // Cae en el piso, a la altura del carril donde estaba el robot
+        Instantiate(elegido, new Vector3(transform.position.x, AlturaCarril + 0.6f, 0f), Quaternion.identity);
     }
 
     void OnDrawGizmosSelected()
