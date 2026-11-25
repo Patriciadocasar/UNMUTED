@@ -406,17 +406,56 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
---- !u!114 &84740431 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7650814755430297320, guid: 3f7c4f271638fc24b9bd268730bb62b7, type: 3}
-  m_PrefabInstance: {fileID: 3416683049460288505}
+--- !u!1 &73727546
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 73727548}
+  - component: {fileID: 73727547}
+  m_Layer: 0
+  m_Name: Control nivel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &73727547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73727546}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7c25058649f29649a1a3f5bc150e682, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ad807a61318ff94cbebcdce0875bc6d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Enemigo
+  m_EditorClassIdentifier: Assembly-CSharp::ControlNivel
+  mensaje: "\xA1NIVEL COMPLETADO!"
+  mensajeFinal: "\xA1GANASTE!"
+  colorTexto: {r: 1, g: 0.85, b: 0.2, a: 1}
+  tamanoTexto: 90
+  esperaAntesDeCambiar: 3
+  sonidoVictoria: {fileID: 0}
+--- !u!4 &73727548
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73727546}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 13.71974, y: 3.49936, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &150453599
 GameObject:
   m_ObjectHideFlags: 0
@@ -594,7 +633,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fc4f35deb04ca4429e0e314f891ec60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BarraRobotUI
-  enemigo: {fileID: 84740431}
 --- !u!1 &290702839
 GameObject:
   m_ObjectHideFlags: 0
@@ -10103,7 +10141,18 @@ MonoBehaviour:
   energiaPorGolpe: 7.5
   energiaPorImpacto: 0
   alturaEfecto: 1.6
+  poder: 0
   danoAcorde: 99
+  duracionBaile: 4
+  prefabBolaDisco: {fileID: 0}
+  tamanoBola: 0.5
+  sonidoBolaDisco: {fileID: 0}
+  vidaQueCura: 10
+  prefabFandom: {fileID: 0}
+  sonidoFandom: {fileID: 0}
+  duracionEscudo: 5
+  prefabEscudo: {fileID: 0}
+  sonidoEscudo: {fileID: 0}
   sonidoDisparo: {fileID: 8300000, guid: a03db11f794d3ed4fbaf1502423004e2, type: 3}
   sonidoAcorde: {fileID: 8300000, guid: c7384e38c55c8324fa006074c9aab9b4, type: 3}
 --- !u!114 &2116723924
@@ -10422,3 +10471,4 @@ SceneRoots:
   - {fileID: 437790807}
   - {fileID: 2145626151}
   - {fileID: 8211571492018392791}
+  - {fileID: 73727548}
