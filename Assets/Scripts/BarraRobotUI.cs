@@ -21,9 +21,16 @@ public class BarraRobotUI : MonoBehaviour
         barra.value = vidaTotalInicial;   // empieza llena
     }
 
+    float anterior;
+
     void Update()
     {
-        barra.value = VidaTotal();
+        float v = VidaTotal();
+        // Si llegan robots nuevos (oleadas), la barra se vuelve a llenar con la vida de los nuevos
+        if (anterior <= 0f && v > 0f) barra.maxValue = v;
+        if (v > barra.maxValue) barra.maxValue = v;
+        barra.value = v;
+        anterior = v;
     }
 
     // Suma la vida que le queda a cada robot vivo

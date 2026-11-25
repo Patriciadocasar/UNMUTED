@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 // Los poderes especiales de cada nivel
-public enum TipoPoder { AcordeExplosivo, BolaDeDisco, PoderDelFandom, EscudoDeEstrellas }
+public enum TipoPoder { AcordeExplosivo, BolaDeDisco, PoderDelFandom, EscudoDeEstrellas, CoroDeSiete }
 
 [RequireComponent(typeof(EnergiaSonica))]
 [RequireComponent(typeof(HarperMovimiento))]
@@ -39,7 +39,13 @@ public class HarperAtaque : MonoBehaviour
     public float tamanoBola = 0.5f;            // qué tan grande se ve la bola volando
     public AudioClip sonidoBolaDisco;
 
-    [Header("Poder del Fandom (BTS)")]
+    [Header("Coro de Siete (BTS)")]
+    public int danoPorNota = 1;                // cada una de las 7 notas
+    public float velocidadNotas = 9f;
+    public AudioClip sonidoCoro;
+    public Sprite spriteNotaCoro;              // opcional: si lo dejas vacío, las notas se dibujan solas
+
+    [Header("Poder del Fandom (curar, ya no se usa en BTS)")]
     public int vidaQueCura = 10;
     public GameObject prefabFandom;            // efecto opcional sobre Harper
     public AudioClip sonidoFandom;
@@ -139,6 +145,10 @@ public class HarperAtaque : MonoBehaviour
             case TipoPoder.BolaDeDisco:       BolaDeDisco();     break;
             case TipoPoder.PoderDelFandom:    PoderDelFandom();  break;
             case TipoPoder.EscudoDeEstrellas: EscudoDeEstrellas(); break;
+            case TipoPoder.CoroDeSiete:
+                Sonidos.Tocar(sonidoCoro);
+                NotaCoro.LanzarCoro(PuntoDeSalida(mov.Direccion), mov.Direccion, danoPorNota, velocidadNotas, prefabImpacto, spriteNotaCoro);
+                break;
         }
     }
 

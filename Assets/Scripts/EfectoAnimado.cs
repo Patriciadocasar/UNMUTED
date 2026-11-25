@@ -115,9 +115,15 @@ public class EfectoAnimado : MonoBehaviour
         float maxX = Mathf.Max(xAntes, xAhora) + tamanoHit.x / 2f;
         foreach (var e in FindObjectsByType<Enemigo>())
         {
-            if (Mathf.Abs(e.AlturaCarril - carrilY) > ToleranciaPara(e)) continue;
-
             var col = e.GetComponentInChildren<Collider2D>();
+
+            // Cuenta si está en el mismo carril que Harper... o si el golpe pasa visualmente por su cuerpo
+            // (así también se le puede pegar al robot volador cuando está arriba)
+            bool enCarril = Mathf.Abs(e.AlturaCarril - carrilY) <= ToleranciaPara(e);
+            bool tocaCuerpo = col != null && transform.position.y >= col.bounds.min.y - 0.3f
+                                          && transform.position.y <= col.bounds.max.y + 0.3f;
+            if (!enCarril && !tocaCuerpo) continue;
+
             float izq = col != null ? col.bounds.min.x : e.transform.position.x - 0.5f;
             float der = col != null ? col.bounds.max.x : e.transform.position.x + 0.5f;
             if (maxX < izq || minX > der) continue;   // todavía no llega o ya pasó
