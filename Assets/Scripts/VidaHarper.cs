@@ -13,6 +13,10 @@ public class VidaHarper : MonoBehaviour
     public GameObject prefabGolpeRecibido;   // arrastra aquí el prefab del destello
     public float alturaEfecto = 1.75f;       // qué tan arriba de los pies aparece
 
+    [Header("Sonidos")]
+    public AudioClip sonidoGolpe;            // cuando la golpean
+    public AudioClip sonidoMuerte;           // cuando pierde
+
     SpriteRenderer sr;
     float hasta;
     bool muerta;
@@ -34,8 +38,8 @@ public class VidaHarper : MonoBehaviour
         if (prefabGolpeRecibido != null)
             Instantiate(prefabGolpeRecibido, transform.position + Vector3.up * alturaEfecto, Quaternion.identity);
 
-        if (Actual <= 0) StartCoroutine(Morir());
-        else StartCoroutine(Parpadeo());
+        if (Actual <= 0) { Sonidos.Tocar(sonidoMuerte); StartCoroutine(Morir()); }
+        else { Sonidos.Tocar(sonidoGolpe); StartCoroutine(Parpadeo()); }
         return true;
     }
 

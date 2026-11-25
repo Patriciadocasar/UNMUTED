@@ -26,6 +26,10 @@ public class HarperAtaque : MonoBehaviour
     [Header("Acorde Explosivo (K o X)")]
     public int danoAcorde = 99;
 
+    [Header("Sonidos")]
+    public AudioClip sonidoDisparo;      // cada golpe básico
+    public AudioClip sonidoAcorde;       // el poder especial
+
     EnergiaSonica energia;
     HarperMovimiento mov;
     SpriteRenderer sr;
@@ -76,6 +80,7 @@ public class HarperAtaque : MonoBehaviour
     void AtaqueBasico()
     {
         proximoGolpe = Time.time + cooldown;
+        Sonidos.Tocar(sonidoDisparo);
         energia.Sumar(energiaPorGolpe);
         PonerPose();
 
@@ -100,6 +105,7 @@ public class HarperAtaque : MonoBehaviour
     {
         if (!energia.EstaLlena) return;
         energia.GastarTodo();
+        Sonidos.Tocar(sonidoAcorde);
         PonerPose();
 
         var cam = Camera.main;

@@ -33,6 +33,11 @@ public class Enemigo : MonoBehaviour
     public float duracionGolpe = 0.25f;
     public GameObject prefabMuerte;
 
+    [Header("Sonidos")]
+    public AudioClip sonidoDisparo;      // cuando dispara
+    public AudioClip sonidoGolpe;        // cuando Harper le pega
+    public AudioClip sonidoMuerte;       // cuando explota
+
     Rigidbody2D rb;
     SpriteRenderer sr;
     Sprite spriteNormal;
@@ -97,6 +102,7 @@ public class Enemigo : MonoBehaviour
         proximoDisparo = Time.time + cadencia;
         distanciaDisparo = Random.Range(distanciaMin, distanciaMax);   // la próxima vez, otra distancia
         if (prefabBala == null) { Debug.LogWarning("Enemigo: falta Prefab Bala"); return; }
+        Sonidos.Tocar(sonidoDisparo);
 
         Vector3 pos = transform.position +
             new Vector3(dirHacia * Mathf.Abs(salidaBala.x), salidaBala.y, 0f);
@@ -110,6 +116,7 @@ public class Enemigo : MonoBehaviour
         vida -= d;
         Debug.Log("Robot recibió " + d + " de daño. Le queda: " + vida);
         if (vida <= 0) { Morir(); return; }
+        Sonidos.Tocar(sonidoGolpe);
 
         finAturdido = Time.time + duracionGolpe * 2f;
         if (reaccion != null) StopCoroutine(reaccion);
@@ -137,6 +144,7 @@ public class Enemigo : MonoBehaviour
 
     void Morir()
     {
+        Sonidos.Tocar(sonidoMuerte);
         if (prefabMuerte != null)
             Instantiate(prefabMuerte, transform.position + Vector3.up * 0.5f, Quaternion.identity);
         Destroy(gameObject);
