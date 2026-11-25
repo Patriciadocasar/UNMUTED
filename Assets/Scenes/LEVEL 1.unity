@@ -1584,6 +1584,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2651511722421557331, guid: cdf9fdedb64523f4cbe5ae92742a3170, type: 3}
+      propertyPath: poder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6369483102794031115, guid: cdf9fdedb64523f4cbe5ae92742a3170, type: 3}
       propertyPath: m_Name
       value: Harper2
