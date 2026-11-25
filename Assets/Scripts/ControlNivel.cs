@@ -32,10 +32,14 @@ public class ControlNivel : MonoBehaviour
     void Revisar()
     {
         if (terminado || !habiaRobots) return;
+
+        // Si el nivel tiene oleadas, esperamos a que termine la última (entre oleadas no hay robots)
+        var oleadas = FindAnyObjectByType<GestorOleadas>();
+        if (oleadas != null && !oleadas.Terminado) return;
         if (FindObjectsByType<Enemigo>().Length > 0) return;   // todavía quedan robots
 
         // ¿Harper sigue viva?
-        var harper = FindFirstObjectByType<VidaHarper>();
+        var harper = FindAnyObjectByType<VidaHarper>();
         if (harper != null && harper.Actual <= 0) return;
 
         terminado = true;
@@ -51,7 +55,7 @@ public class ControlNivel : MonoBehaviour
         MostrarTexto(hayOtroNivel ? mensaje : mensajeFinal);
 
         // Harper queda quieta celebrando
-        var ataque = FindFirstObjectByType<HarperAtaque>(); if (ataque) ataque.enabled = false;
+        var ataque = FindAnyObjectByType<HarperAtaque>(); if (ataque) ataque.enabled = false;
 
         yield return new WaitForSeconds(esperaAntesDeCambiar);
 

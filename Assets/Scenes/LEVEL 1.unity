@@ -10147,6 +10147,10 @@ MonoBehaviour:
   prefabBolaDisco: {fileID: 0}
   tamanoBola: 0.5
   sonidoBolaDisco: {fileID: 0}
+  danoPorNota: 1
+  velocidadNotas: 9
+  sonidoCoro: {fileID: 0}
+  spriteNotaCoro: {fileID: 0}
   vidaQueCura: 10
   prefabFandom: {fileID: 0}
   sonidoFandom: {fileID: 0}
@@ -10406,6 +10410,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6116059656706494344, guid: 0a7b6d04b4779ba4e9345fc86f7cb7e3, type: 3}
+      propertyPath: volumenMusica
+      value: 0.41
+      objectReference: {fileID: 0}
     - target: {fileID: 8925564938693491613, guid: 0a7b6d04b4779ba4e9345fc86f7cb7e3, type: 3}
       propertyPath: m_Name
       value: Sonidos

@@ -766,8 +766,6 @@ MonoBehaviour:
   framesPorPulso: 0
   latido: 0
   encendido: 1
-  sr: {fileID: 0}
-  escalaBase: {x: 0, y: 0, z: 0}
 --- !u!212 &282910707
 SpriteRenderer:
   serializedVersion: 3
@@ -825,7 +823,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 3.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!1 &290702839
@@ -980,7 +978,6 @@ MonoBehaviour:
   intensidadBase: 0.7
   pulso: 0.2
   nivel: 1
-  luz: {fileID: 0}
 --- !u!114 &312021596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1150,8 +1147,6 @@ MonoBehaviour:
   framesPorPulso: 1
   latido: 0
   encendido: 1
-  sr: {fileID: 0}
-  escalaBase: {x: 0, y: 0, z: 0}
 --- !u!212 &353536775
 SpriteRenderer:
   serializedVersion: 3
@@ -1209,7 +1204,7 @@ SpriteRenderer:
   m_Size: {x: 6.75, y: 2.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!1 &356619451
@@ -1544,8 +1539,6 @@ MonoBehaviour:
   framesPorPulso: 0.5
   latido: 0
   encendido: 1
-  sr: {fileID: 0}
-  escalaBase: {x: 0, y: 0, z: 0}
 --- !u!212 &512361730
 SpriteRenderer:
   serializedVersion: 3
@@ -1603,7 +1596,7 @@ SpriteRenderer:
   m_Size: {x: 4, y: 3.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!1 &528522576
@@ -1731,8 +1724,6 @@ MonoBehaviour:
   framesPorPulso: 0
   latido: 0
   encendido: 1
-  sr: {fileID: 0}
-  escalaBase: {x: 0, y: 0, z: 0}
 --- !u!212 &535755303
 SpriteRenderer:
   serializedVersion: 3
@@ -1790,7 +1781,7 @@ SpriteRenderer:
   m_Size: {x: 5, y: 5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!1 &588733583
@@ -1841,7 +1832,6 @@ MonoBehaviour:
   intensidadBase: 1.2
   pulso: 0.6
   nivel: 1
-  luz: {fileID: 0}
 --- !u!114 &588733586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2029,8 +2019,6 @@ MonoBehaviour:
   framesPorPulso: 0
   latido: 0
   encendido: 1
-  sr: {fileID: 0}
-  escalaBase: {x: 0, y: 0, z: 0}
 --- !u!212 &628620837
 SpriteRenderer:
   serializedVersion: 3
@@ -2088,7 +2076,7 @@ SpriteRenderer:
   m_Size: {x: 2, y: 1.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!1 &655389220
@@ -2141,8 +2129,6 @@ MonoBehaviour:
   framesPorPulso: 120
   latido: 0
   encendido: 1
-  sr: {fileID: 0}
-  escalaBase: {x: 0, y: 0, z: 0}
 --- !u!212 &655389223
 SpriteRenderer:
   serializedVersion: 3
@@ -2200,7 +2186,7 @@ SpriteRenderer:
   m_Size: {x: 2, y: 1.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!1 &670252884
@@ -2253,8 +2239,6 @@ MonoBehaviour:
   framesPorPulso: 0
   latido: 0
   encendido: 1
-  sr: {fileID: 0}
-  escalaBase: {x: 0, y: 0, z: 0}
 --- !u!212 &670252887
 SpriteRenderer:
   serializedVersion: 3
@@ -2312,7 +2296,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 3.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!1 &697140213
@@ -2401,8 +2385,6 @@ MonoBehaviour:
   framesPorPulso: 0
   latido: 0
   encendido: 1
-  sr: {fileID: 0}
-  escalaBase: {x: 0, y: 0, z: 0}
 --- !u!212 &734285549
 SpriteRenderer:
   serializedVersion: 3
@@ -2460,7 +2442,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 3.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!1 &818056505
@@ -2782,9 +2764,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GestorOleadas
   robotBase: {fileID: 1458028385}
-  robotsPorOleada: 010000000200000000000000
+  robotsPorOleada: 010000000200000000000000i
   prefabEspecial: {fileID: 8535150188369780868, guid: bb047249f9c761a4e91edd05f64df60d, type: 3}
-  especialesPorOleada: 000000000000000001000000
+  especialesPorOleada: 000000000000000001000000i
   pausaEntreOleadas: 2.5
   pausaEntreRobots: 0.6
   xAparicion:
@@ -2794,13 +2776,8 @@ MonoBehaviour:
   alGanar:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   siguienteEscena: 
   esperaSiguiente: 5
-  <OleadaActual>k__BackingField: 0
-  <Terminado>k__BackingField: 0
-  molde: {fileID: 0}
-  lado: 0
 --- !u!114 &950187370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2935,7 +2912,6 @@ MonoBehaviour:
   bpm: 120
   desfaseSegundos: 0
   musica: {fileID: 950187371}
-  inicio: 0
 --- !u!4 &950187373
 Transform:
   m_ObjectHideFlags: 0
@@ -9203,8 +9179,6 @@ MonoBehaviour:
   framesPorPulso: 1
   latido: 0
   encendido: 1
-  sr: {fileID: 0}
-  escalaBase: {x: 0, y: 0, z: 0}
 --- !u!212 &1012884087
 SpriteRenderer:
   serializedVersion: 3
@@ -9262,7 +9236,7 @@ SpriteRenderer:
   m_Size: {x: 11.5, y: 4.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!1 &1021432104
@@ -9315,8 +9289,6 @@ MonoBehaviour:
   framesPorPulso: 0
   latido: 0
   encendido: 1
-  sr: {fileID: 0}
-  escalaBase: {x: 0, y: 0, z: 0}
 --- !u!212 &1021432107
 SpriteRenderer:
   serializedVersion: 3
@@ -9374,7 +9346,7 @@ SpriteRenderer:
   m_Size: {x: 2, y: 1.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!1 &1098877451
@@ -9919,8 +9891,6 @@ MonoBehaviour:
   framesPorPulso: 1
   latido: 0
   encendido: 1
-  sr: {fileID: 0}
-  escalaBase: {x: 0, y: 0, z: 0}
 --- !u!212 &1224003932
 SpriteRenderer:
   serializedVersion: 3
@@ -9978,7 +9948,7 @@ SpriteRenderer:
   m_Size: {x: 2, y: 5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!1 &1346782036
@@ -10032,8 +10002,6 @@ MonoBehaviour:
   framesPorPulso: 1
   latido: 0
   encendido: 1
-  sr: {fileID: 0}
-  escalaBase: {x: 0, y: 0, z: 0}
 --- !u!212 &1346782039
 SpriteRenderer:
   serializedVersion: 3
@@ -10091,7 +10059,7 @@ SpriteRenderer:
   m_Size: {x: 2.5, y: 8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!1 &1359853786
@@ -10145,8 +10113,6 @@ MonoBehaviour:
   framesPorPulso: 1
   latido: 0
   encendido: 1
-  sr: {fileID: 0}
-  escalaBase: {x: 0, y: 0, z: 0}
 --- !u!212 &1359853789
 SpriteRenderer:
   serializedVersion: 3
@@ -10204,7 +10170,7 @@ SpriteRenderer:
   m_Size: {x: 2.5, y: 8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!1 &1363914270
@@ -10255,7 +10221,6 @@ MonoBehaviour:
   intensidadBase: 1.1
   pulso: 0.35
   nivel: 1
-  luz: {fileID: 0}
 --- !u!114 &1363914273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10378,8 +10343,6 @@ MonoBehaviour:
   framesPorPulso: 0
   latido: 0
   encendido: 1
-  sr: {fileID: 0}
-  escalaBase: {x: 0, y: 0, z: 0}
 --- !u!212 &1403164924
 SpriteRenderer:
   serializedVersion: 3
@@ -10437,7 +10400,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 3.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!1 &1418231809
@@ -10492,8 +10455,6 @@ MonoBehaviour:
   framesPorPulso: 2
   latido: 0
   encendido: 1
-  sr: {fileID: 0}
-  escalaBase: {x: 0, y: 0, z: 0}
 --- !u!212 &1418231812
 SpriteRenderer:
   serializedVersion: 3
@@ -10551,7 +10512,7 @@ SpriteRenderer:
   m_Size: {x: 14, y: 9.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!1 &1427088725
@@ -10602,7 +10563,6 @@ MonoBehaviour:
   intensidadBase: 0.9
   pulso: 0.3
   nivel: 1
-  luz: {fileID: 0}
 --- !u!114 &1427088728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10801,8 +10761,6 @@ MonoBehaviour:
   framesPorPulso: 0
   latido: 0
   encendido: 1
-  sr: {fileID: 0}
-  escalaBase: {x: 0, y: 0, z: 0}
 --- !u!212 &1519926881
 SpriteRenderer:
   serializedVersion: 3
@@ -10860,7 +10818,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 3.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!1 &1622299503
@@ -10913,8 +10871,6 @@ MonoBehaviour:
   framesPorPulso: 0
   latido: 0
   encendido: 1
-  sr: {fileID: 0}
-  escalaBase: {x: 0, y: 0, z: 0}
 --- !u!212 &1622299506
 SpriteRenderer:
   serializedVersion: 3
@@ -10972,7 +10928,7 @@ SpriteRenderer:
   m_Size: {x: 2, y: 1.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!1 &1653456720
@@ -11100,8 +11056,6 @@ MonoBehaviour:
   framesPorPulso: 0
   latido: 0
   encendido: 1
-  sr: {fileID: 0}
-  escalaBase: {x: 0, y: 0, z: 0}
 --- !u!212 &1689232387
 SpriteRenderer:
   serializedVersion: 3
@@ -11159,7 +11113,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 3.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!1 &1790170773
@@ -11212,8 +11166,6 @@ MonoBehaviour:
   framesPorPulso: 0
   latido: 0
   encendido: 1
-  sr: {fileID: 0}
-  escalaBase: {x: 0, y: 0, z: 0}
 --- !u!212 &1790170776
 SpriteRenderer:
   serializedVersion: 3
@@ -11271,7 +11223,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 3.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!1 &1817254705
@@ -11325,8 +11277,6 @@ MonoBehaviour:
   framesPorPulso: 0.5
   latido: 0
   encendido: 1
-  sr: {fileID: 0}
-  escalaBase: {x: 0, y: 0, z: 0}
 --- !u!212 &1817254708
 SpriteRenderer:
   serializedVersion: 3
@@ -11384,7 +11334,7 @@ SpriteRenderer:
   m_Size: {x: 2, y: 4.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!1 &1858097685
@@ -11829,7 +11779,6 @@ MonoBehaviour:
   intensidadBase: 0.9
   pulso: 0.3
   nivel: 1
-  luz: {fileID: 0}
 --- !u!114 &2016105324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11950,7 +11899,6 @@ MonoBehaviour:
   intensidadBase: 1
   pulso: 0.5
   nivel: 1
-  luz: {fileID: 0}
 --- !u!114 &2034665841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12073,8 +12021,6 @@ MonoBehaviour:
   framesPorPulso: 0
   latido: 0
   encendido: 1
-  sr: {fileID: 0}
-  escalaBase: {x: 0, y: 0, z: 0}
 --- !u!212 &2058237880
 SpriteRenderer:
   serializedVersion: 3
@@ -12132,7 +12078,7 @@ SpriteRenderer:
   m_Size: {x: 30, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!1 &2063793894
@@ -12186,8 +12132,6 @@ MonoBehaviour:
   framesPorPulso: 1
   latido: 0
   encendido: 1
-  sr: {fileID: 0}
-  escalaBase: {x: 0, y: 0, z: 0}
 --- !u!212 &2063793897
 SpriteRenderer:
   serializedVersion: 3
@@ -12245,7 +12189,7 @@ SpriteRenderer:
   m_Size: {x: 5.5, y: 1.875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!1 &2068807984

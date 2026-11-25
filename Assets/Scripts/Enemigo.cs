@@ -27,6 +27,11 @@ public class Enemigo : MonoBehaviour
     public float retrasoInicial = 1.2f;
     public float toleranciaCarril = 1f;
 
+    [Header("Animación (opcional: si lo dejas vacío usa una sola imagen)")]
+    public Sprite[] framesMovimiento;     // por ejemplo, el robot nuevo flotando
+    public float fpsMovimiento = 8f;
+    float finReaccion;
+
     [Header("Reacciones")]
     public Sprite spriteGolpe1;           // destello
     public Sprite spriteGolpe2;           // tinte rosa
@@ -49,6 +54,24 @@ public class Enemigo : MonoBehaviour
     Vector2 mover;
     int dirHacia = -1;
     float proximoDisparo, finAturdido;
+
+    [Header("Volador (el Silenciador)")]
+    public bool volador = false;            // ✅ = vuela libre por la escena y dispara apuntando a Harper
+    public float alturaVueloMax = 7.5f;     // hasta dónde puede subir (para que Harper igual le alcance)
+    public float cambioRumbo = 2.5f;        // cada cuántos segundos elige otro lugar a donde volar
+    Vector2 objetivoVuelo;
+    float proximoRumbo;
+
+    // Entrada deslizándose desde fuera de la pantalla (la usa GestorOleadas)
+    bool entrando;
+    float xDestinoEntrada;
+    public float velocidadEntrada = 5f;
+
+    public void EntrarHasta(float xDestino)
+    {
+        entrando = true;
+        xDestinoEntrada = xDestino;
+    }
 
     [Header("Baile (poder Bola de Disco)")]
     public float multiplicadorDanoBailando = 2f;   // daño extra mientras baila
@@ -94,6 +117,12 @@ public class Enemigo : MonoBehaviour
         dirHacia = dx >= 0f ? 1 : -1;
         if (sr != null) sr.flipX = miraIzquierdaPorDefecto ? dirHacia > 0 : dirHacia < 0;
 
+        // Animación de moverse/flotar (si no está en medio de una reacción a un golpe)
+        if (sr != null && framesMovimiento != null && framesMovimiento.Length > 0 && Time.time >= finReaccion)
+            sr.sprite = framesMovimiento[(int)(Time.time * fpsMovimiento) % framesMovimiento.Length];
+
+        if (entrando) return;          // mientras entra se ve y se anima, pero no persigue ni dispara
+
         // Bailando: se voltea de un lado a otro y cambia de colores
         if (Bailando)
         {
@@ -109,6 +138,8 @@ public class Enemigo : MonoBehaviour
 
         if (Time.time < finAturdido) return;   // aturdido: no se mueve ni dispara
 
+        if (volador) { Volar(); return; }
+
         if (Mathf.Abs(dx) > distanciaDisparo) mover.x = dirHacia;                 // muy lejos: se acerca
         else if (Mathf.Abs(dx) < distanciaDisparo - 1.5f) mover.x = -dirHacia;   // muy cerca: retrocede
         if (Mathf.Abs(dy) > margenCarril) mover.y = Mathf.Sign(dy);
@@ -122,10 +153,40 @@ public class Enemigo : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (entrando)
+        {
+            // Se desliza hacia su lugar dentro del piso, sin respetar todavía los límites
+            Vector2 p0 = rb.position;
+            float paso = velocidadEntrada * Time.fixedDeltaTime;
+            float nx = Mathf.MoveTowards(p0.x, xDestinoEntrada, paso);
+            rb.MovePosition(new Vector2(nx, p0.y));
+            if (Mathf.Abs(nx - xDestinoEntrada) < 0.01f) entrando = false;
+            return;
+        }
+
         Vector2 p = rb.position + mover * velocidad * Time.fixedDeltaTime;
         p.x = Mathf.Clamp(p.x, xMin, xMax);
-        p.y = Mathf.Clamp(p.y, yMin + ajusteAltura, yMax + ajusteAltura);
+        float techo = volador ? alturaVueloMax : yMax + ajusteAltura;
+        p.y = Mathf.Clamp(p.y, yMin + ajusteAltura, techo);
         rb.MovePosition(p);
+    }
+
+    // Vuela de un punto a otro de la escena, manteniéndose a distancia de Harper, y le dispara apuntando
+    void Volar()
+    {
+        Vector2 pos = transform.position;
+        if (Time.time >= proximoRumbo || Vector2.Distance(pos, objetivoVuelo) < 0.3f)
+        {
+            proximoRumbo = Time.time + cambioRumbo;
+            float lado = Random.value < 0.5f ? -1f : 1f;
+            float x = Mathf.Clamp(harper.position.x + lado * Random.Range(distanciaMin, distanciaMax), xMin, xMax);
+            float y = Random.Range(yMin + ajusteAltura, alturaVueloMax);
+            objetivoVuelo = new Vector2(x, y);
+        }
+        Vector2 hacia = objetivoVuelo - pos;
+        if (hacia.magnitude > 0.2f) mover = hacia.normalized;
+
+        if (Time.time >= proximoDisparo) Disparar();
     }
 
     void Disparar()
@@ -139,7 +200,16 @@ public class Enemigo : MonoBehaviour
             new Vector3(dirHacia * Mathf.Abs(salidaBala.x), salidaBala.y, 0f);
         var b = Instantiate(prefabBala, pos, Quaternion.identity);
         var bala = b.GetComponent<BalaRobot>();
-        if (bala != null) bala.Lanzar(dirHacia, AlturaCarril);
+        if (bala != null)
+        {
+            if (volador && harper != null)
+            {
+                // Apunta al pecho de Harper, aunque tenga que disparar en diagonal
+                Vector2 objetivo = harper.position + Vector3.up * 1.5f;
+                bala.LanzarApuntada((objetivo - (Vector2)pos).normalized);
+            }
+            else bala.Lanzar(dirHacia, AlturaCarril);
+        }
     }
 
     public void RecibirDano(int d)
@@ -151,6 +221,7 @@ public class Enemigo : MonoBehaviour
         Sonidos.Tocar(sonidoGolpe);
 
         finAturdido = Mathf.Max(finAturdido, Time.time + duracionGolpe * 2f);
+        finReaccion = Time.time + duracionGolpe * 2f;
         if (reaccion != null) StopCoroutine(reaccion);
         reaccion = StartCoroutine(Reaccion());
     }
