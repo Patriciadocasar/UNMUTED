@@ -21,6 +21,8 @@ public class HarperMovimiento : MonoBehaviour
 
     public int Direccion => (sr != null && sr.flipX) ? -1 : 1;
 
+    public Vector2 VelocidadReal { get; private set; }
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -66,7 +68,9 @@ public class HarperMovimiento : MonoBehaviour
         Vector2 p = rb.position + velocidadActual * Time.fixedDeltaTime;
         p.x = Mathf.Clamp(p.x, xMin, xMax);
         p.y = Mathf.Clamp(p.y, yMin, yMax);
-        
+
+        VelocidadReal = (p - rb.position) / Time.fixedDeltaTime;
+
         rb.MovePosition(p);
     }
 }

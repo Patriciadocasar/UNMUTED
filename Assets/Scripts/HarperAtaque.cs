@@ -61,6 +61,8 @@ public class HarperAtaque : MonoBehaviour
     float proximoGolpe;
     float finPose;
 
+    public bool EnPose => finPose > 0f;
+
     void Awake()
     {
         energia = GetComponent<EnergiaSonica>();
