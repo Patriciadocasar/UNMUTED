@@ -1683,7 +1683,11 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: c3092ecef3250ee4db082a181f630e6a, type: 3}
     - target: {fileID: 6116059656706494344, guid: 0a7b6d04b4779ba4e9345fc86f7cb7e3, type: 3}
       propertyPath: volumenMusica
-      value: 0.38
+      value: 0.246
+      objectReference: {fileID: 0}
+    - target: {fileID: 6116059656706494344, guid: 0a7b6d04b4779ba4e9345fc86f7cb7e3, type: 3}
+      propertyPath: volumenEfectos
+      value: 0.129
       objectReference: {fileID: 0}
     - target: {fileID: 8925564938693491613, guid: 0a7b6d04b4779ba4e9345fc86f7cb7e3, type: 3}
       propertyPath: m_Name
