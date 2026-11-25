@@ -1504,6 +1504,7 @@ GameObject:
   m_Component:
   - component: {fileID: 579386593}
   - component: {fileID: 579386594}
+  - component: {fileID: 579386595}
   m_Layer: 0
   m_Name: mariposa_amarilla FRAME 1
   m_TagString: Untagged
@@ -1520,7 +1521,7 @@ Transform:
   m_GameObject: {fileID: 579386592}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.47, y: 6.31, z: 0}
+  m_LocalPosition: {x: -10.47, y: 5.66, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1586,6 +1587,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &579386595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 579386592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad5428cbb73be7f4eba4b3157ed59f8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MariposaAleteo
+  alaAbierta: {fileID: 21300000, guid: 27fcd34af6b112e47923b90fa1b84eb1, type: 3}
+  alaCerrada: {fileID: 21300000, guid: 3105fc3afeeb79b46b9b11f4c517aa7e, type: 3}
+  tiempoPorFrame: 0.18
+  aleteosPorRafaga: {x: 2, y: 5}
+  pausaEntreRafagas: {x: 0.8, y: 2.5}
+  amplitudPixeles: 1
+  velocidadFlotacion: 1.5
+  pixelesPorUnidad: 8
 --- !u!1 &697140213
 GameObject:
   m_ObjectHideFlags: 0
@@ -9319,6 +9340,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1705457417}
   - component: {fileID: 1705457418}
+  - component: {fileID: 1705457419}
   m_Layer: 0
   m_Name: mariposa_azul FRAME 1 (2)
   m_TagString: Untagged
@@ -9335,7 +9357,7 @@ Transform:
   m_GameObject: {fileID: 1705457416}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.33, y: 6.79, z: 0}
+  m_LocalPosition: {x: 9.33, y: 5.43, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9401,6 +9423,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1705457419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705457416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad5428cbb73be7f4eba4b3157ed59f8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MariposaAleteo
+  alaAbierta: {fileID: 21300000, guid: 6b345292cf6275241ad1f000d19a1b5c, type: 3}
+  alaCerrada: {fileID: 21300000, guid: 7ed6d1e090c71fe45adb582d22cec4c3, type: 3}
+  tiempoPorFrame: 0.18
+  aleteosPorRafaga: {x: 2, y: 5}
+  pausaEntreRafagas: {x: 0.8, y: 2.5}
+  amplitudPixeles: 1
+  velocidadFlotacion: 1.5
+  pixelesPorUnidad: 8
 --- !u!1 &1745646760
 GameObject:
   m_ObjectHideFlags: 0
@@ -9411,6 +9453,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1745646761}
   - component: {fileID: 1745646762}
+  - component: {fileID: 1745646763}
   m_Layer: 0
   m_Name: mariposa_amarilla FRAME 1 (1)
   m_TagString: Untagged
@@ -9427,7 +9470,7 @@ Transform:
   m_GameObject: {fileID: 1745646760}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.4, y: 7.94, z: 0}
+  m_LocalPosition: {x: 12.11, y: 7.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9493,6 +9536,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1745646763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745646760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad5428cbb73be7f4eba4b3157ed59f8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MariposaAleteo
+  alaAbierta: {fileID: 21300000, guid: 27fcd34af6b112e47923b90fa1b84eb1, type: 3}
+  alaCerrada: {fileID: 21300000, guid: 3105fc3afeeb79b46b9b11f4c517aa7e, type: 3}
+  tiempoPorFrame: 0.18
+  aleteosPorRafaga: {x: 2, y: 5}
+  pausaEntreRafagas: {x: 0.8, y: 2.5}
+  amplitudPixeles: 1
+  velocidadFlotacion: 1.5
+  pixelesPorUnidad: 8
 --- !u!1 &1748132494
 GameObject:
   m_ObjectHideFlags: 0
@@ -9503,6 +9566,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1748132495}
   - component: {fileID: 1748132496}
+  - component: {fileID: 1748132497}
   m_Layer: 0
   m_Name: mariposa_azul FRAME 1 (1)
   m_TagString: Untagged
@@ -9519,7 +9583,7 @@ Transform:
   m_GameObject: {fileID: 1748132494}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.22, y: 8.29, z: 0}
+  m_LocalPosition: {x: -7.57, y: 6.64, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9585,6 +9649,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1748132497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748132494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad5428cbb73be7f4eba4b3157ed59f8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MariposaAleteo
+  alaAbierta: {fileID: 21300000, guid: 6b345292cf6275241ad1f000d19a1b5c, type: 3}
+  alaCerrada: {fileID: 21300000, guid: 7ed6d1e090c71fe45adb582d22cec4c3, type: 3}
+  tiempoPorFrame: 0.18
+  aleteosPorRafaga: {x: 2, y: 5}
+  pausaEntreRafagas: {x: 0.8, y: 2.5}
+  amplitudPixeles: 1
+  velocidadFlotacion: 1.5
+  pixelesPorUnidad: 8
 --- !u!1 &1813576822
 GameObject:
   m_ObjectHideFlags: 0
@@ -10460,6 +10544,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2118893775}
   - component: {fileID: 2118893776}
+  - component: {fileID: 2118893777}
   m_Layer: 0
   m_Name: mariposa_azul FRAME 1
   m_TagString: Untagged
@@ -10476,7 +10561,7 @@ Transform:
   m_GameObject: {fileID: 2118893774}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.99, y: 5.69, z: 0}
+  m_LocalPosition: {x: -6.81, y: 4.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10542,6 +10627,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &2118893777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118893774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad5428cbb73be7f4eba4b3157ed59f8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MariposaAleteo
+  alaAbierta: {fileID: 21300000, guid: 6b345292cf6275241ad1f000d19a1b5c, type: 3}
+  alaCerrada: {fileID: 21300000, guid: 7ed6d1e090c71fe45adb582d22cec4c3, type: 3}
+  tiempoPorFrame: 0.18
+  aleteosPorRafaga: {x: 2, y: 5}
+  pausaEntreRafagas: {x: 0.8, y: 2.5}
+  amplitudPixeles: 1
+  velocidadFlotacion: 1.5
+  pixelesPorUnidad: 8
 --- !u!1 &2145626149
 GameObject:
   m_ObjectHideFlags: 0
