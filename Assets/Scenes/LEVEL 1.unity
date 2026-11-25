@@ -1588,17 +1588,25 @@ PrefabInstance:
       propertyPath: poder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6234005630616842638, guid: cdf9fdedb64523f4cbe5ae92742a3170, type: 3}
+      propertyPath: m_Size.y
+      value: 5.1206026
+      objectReference: {fileID: 0}
+    - target: {fileID: 6234005630616842638, guid: cdf9fdedb64523f4cbe5ae92742a3170, type: 3}
+      propertyPath: m_Offset.y
+      value: 3.3535013
+      objectReference: {fileID: 0}
     - target: {fileID: 6369483102794031115, guid: cdf9fdedb64523f4cbe5ae92742a3170, type: 3}
       propertyPath: m_Name
       value: Harper2
       objectReference: {fileID: 0}
     - target: {fileID: 8513674602487769062, guid: cdf9fdedb64523f4cbe5ae92742a3170, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.3
+      value: 10.45
       objectReference: {fileID: 0}
     - target: {fileID: 8513674602487769062, guid: cdf9fdedb64523f4cbe5ae92742a3170, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.07
+      value: 0.47
       objectReference: {fileID: 0}
     - target: {fileID: 8513674602487769062, guid: cdf9fdedb64523f4cbe5ae92742a3170, type: 3}
       propertyPath: m_LocalPosition.z
