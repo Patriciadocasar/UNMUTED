@@ -15,11 +15,19 @@ public class HarperMovimiento : MonoBehaviour
     public float desaceleracion = 220f; 
 
     Rigidbody2D rb;
+    HarperAgachar agachar;   // NUEVO
+    VidaHarper vida;         // NUEVO
     SpriteRenderer sr;
     Vector2 dirInput;
     Vector2 velocidadActual; // Guarda el vector de la inercia actual
 
     public int Direccion => (sr != null && sr.flipX) ? -1 : 1;
+
+    // NUEVO (animación): velocidad real después de chocar con los límites del piso.
+    public Vector2 VelocidadReal { get; private set; }
+
+    // NUEVO: no camina mientras está agachada o aturdida por un golpe
+    public bool Bloqueada => (agachar != null && agachar.Agachada) || (vida != null && vida.Aturdida);
 
     void Awake()
     {
@@ -28,6 +36,8 @@ public class HarperMovimiento : MonoBehaviour
         rb.freezeRotation = true;
 
         sr = GetComponentInChildren<SpriteRenderer>();
+        agachar = GetComponent<HarperAgachar>();   // NUEVO
+        vida = GetComponent<VidaHarper>();         // NUEVO
         if (sr == null) Debug.LogWarning("Harper no tiene SpriteRenderer");
     }
 
@@ -42,6 +52,8 @@ public class HarperMovimiento : MonoBehaviour
         if (k.sKey.isPressed || k.downArrowKey.isPressed)  y -= 1;
         if (k.wKey.isPressed || k.upArrowKey.isPressed)    y += 1;
         
+        if (Bloqueada) { dirInput = Vector2.zero; return; }   // NUEVO
+
         dirInput = new Vector2(x, y).normalized;
 
         if (x != 0 && sr != null) sr.flipX = x < 0;
@@ -66,7 +78,8 @@ public class HarperMovimiento : MonoBehaviour
         Vector2 p = rb.position + velocidadActual * Time.fixedDeltaTime;
         p.x = Mathf.Clamp(p.x, xMin, xMax);
         p.y = Mathf.Clamp(p.y, yMin, yMax);
-        
+
+        VelocidadReal = (p - rb.position) / Time.fixedDeltaTime;   // NUEVO (animación)
         rb.MovePosition(p);
     }
 }

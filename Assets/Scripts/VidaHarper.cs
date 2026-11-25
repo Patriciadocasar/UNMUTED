@@ -17,9 +17,20 @@ public class VidaHarper : MonoBehaviour
     public AudioClip sonidoGolpe;            // cuando la golpean
     public AudioClip sonidoMuerte;           // cuando pierde
 
+    [Header("Reacción al golpe (sprite HarperHerida)")]
+    public float duracionHerida = 0.3f;        // NUEVO: segundos con la cara de dolor
+    public bool quietaMientrasHerida = true; // NUEVO: no camina ni ataca durante ese segundo
+
     SpriteRenderer sr;
     float hasta;
     bool muerta;
+    float finHerida;                         // NUEVO
+
+    // NUEVO: los usan HarperAnimacion, HarperMovimiento, HarperAtaque y HarperAgachar
+    public bool Muerta => muerta;
+    public bool Herida => !muerta && Time.time < finHerida;
+    public bool Aturdida => quietaMientrasHerida && Herida;
+    public event System.Action AlSerGolpeada;
 
     void Awake()
     {
@@ -33,6 +44,8 @@ public class VidaHarper : MonoBehaviour
         if (muerta || Time.time < hasta) return false;   // invulnerable: el golpe no cuenta
         Actual = Mathf.Max(0, Actual - d);
         hasta = Time.time + invulnerable;
+        finHerida = Time.time + duracionHerida;   
+        AlSerGolpeada?.Invoke();                  
 
         // Destello de golpe sobre Harper
         if (prefabGolpeRecibido != null)

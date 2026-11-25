@@ -1882,6 +1882,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f7c4f271638fc24b9bd268730bb62b7, type: 3}
+--- !u!1 &855538179 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6369483102794031115, guid: cdf9fdedb64523f4cbe5ae92742a3170, type: 3}
+  m_PrefabInstance: {fileID: 1656791769098024525}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &900561748
 GameObject:
   m_ObjectHideFlags: 0
@@ -13125,7 +13130,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9131757869358080691, guid: cdf9fdedb64523f4cbe5ae92742a3170, type: 3}
   m_PrefabInstance: {fileID: 1656791769098024525}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 855538179}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad8a7b649e7269143af8ae1de0951fa1, type: 3}
@@ -13136,12 +13141,64 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4631385057595465328, guid: cdf9fdedb64523f4cbe5ae92742a3170, type: 3}
   m_PrefabInstance: {fileID: 1656791769098024525}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 855538179}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f3e7b55e44ddff74580170ddadb1a906, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VidaHarper
+--- !u!114 &2116723932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855538179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff4316dc889daa740acdc7b4b7ee2cfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HarperAnimacion
+  idle:
+  - {fileID: 6937803220914812674, guid: 9e695e25e2ce37a408b72f31dc5834ba, type: 3}
+  - {fileID: -3476880532879555175, guid: 9e695e25e2ce37a408b72f31dc5834ba, type: 3}
+  - {fileID: -2966846137520063066, guid: 9e695e25e2ce37a408b72f31dc5834ba, type: 3}
+  - {fileID: 4195122746861908294, guid: 9e695e25e2ce37a408b72f31dc5834ba, type: 3}
+  caminar:
+  - {fileID: 776522490974083275, guid: 9e695e25e2ce37a408b72f31dc5834ba, type: 3}
+  - {fileID: 7189925401812035184, guid: 9e695e25e2ce37a408b72f31dc5834ba, type: 3}
+  - {fileID: 1933393276168340112, guid: 9e695e25e2ce37a408b72f31dc5834ba, type: 3}
+  - {fileID: -1423723864353615246, guid: 9e695e25e2ce37a408b72f31dc5834ba, type: 3}
+  - {fileID: -538082273884093930, guid: 9e695e25e2ce37a408b72f31dc5834ba, type: 3}
+  - {fileID: 5648242188924500116, guid: 9e695e25e2ce37a408b72f31dc5834ba, type: 3}
+  - {fileID: 4450575740121172853, guid: 9e695e25e2ce37a408b72f31dc5834ba, type: 3}
+  - {fileID: 3752482955380480817, guid: 9e695e25e2ce37a408b72f31dc5834ba, type: 3}
+  agacharse: {fileID: -3551928830240490343, guid: 9e695e25e2ce37a408b72f31dc5834ba, type: 3}
+  agachada:
+  - {fileID: 122188955869486816, guid: 9e695e25e2ce37a408b72f31dc5834ba, type: 3}
+  - {fileID: 8454879995731473360, guid: 9e695e25e2ce37a408b72f31dc5834ba, type: 3}
+  herida: {fileID: -5149570960624749442, guid: 9e695e25e2ce37a408b72f31dc5834ba, type: 3}
+  fpsIdle: 4
+  fpsCaminar: 12
+  fpsAgachada: 2.5
+  ajustarAVelocidad: 1
+  umbralMovimiento: 0.5
+--- !u!114 &2116723933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855538179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46bae446f11991f42bdbb5d6431fb6ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HarperAgachar
+  tecla: 1
+  teclaAlterna: 17
+  duracionTransicion: 0.06
+  alturaAgachada: 6.4
 --- !u!1 &2130906216
 GameObject:
   m_ObjectHideFlags: 0
@@ -13397,7 +13454,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6369483102794031115, guid: cdf9fdedb64523f4cbe5ae92742a3170, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2116723932}
+    - targetCorrespondingSourceObject: {fileID: 6369483102794031115, guid: cdf9fdedb64523f4cbe5ae92742a3170, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2116723933}
   m_SourcePrefab: {fileID: 100100000, guid: cdf9fdedb64523f4cbe5ae92742a3170, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
