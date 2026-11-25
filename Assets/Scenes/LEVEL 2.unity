@@ -9865,6 +9865,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!1001 &1622183928
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5870656598081396959, guid: c79b34555ce746942b7b82d8aefa6d80, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 13.71974
+      objectReference: {fileID: 0}
+    - target: {fileID: 5870656598081396959, guid: c79b34555ce746942b7b82d8aefa6d80, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.49936
+      objectReference: {fileID: 0}
+    - target: {fileID: 5870656598081396959, guid: c79b34555ce746942b7b82d8aefa6d80, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5870656598081396959, guid: c79b34555ce746942b7b82d8aefa6d80, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5870656598081396959, guid: c79b34555ce746942b7b82d8aefa6d80, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5870656598081396959, guid: c79b34555ce746942b7b82d8aefa6d80, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5870656598081396959, guid: c79b34555ce746942b7b82d8aefa6d80, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5870656598081396959, guid: c79b34555ce746942b7b82d8aefa6d80, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5870656598081396959, guid: c79b34555ce746942b7b82d8aefa6d80, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5870656598081396959, guid: c79b34555ce746942b7b82d8aefa6d80, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8542220338211890639, guid: c79b34555ce746942b7b82d8aefa6d80, type: 3}
+      propertyPath: m_Name
+      value: Generador de comodines
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c79b34555ce746942b7b82d8aefa6d80, type: 3}
 --- !u!1 &1653456720
 GameObject:
   m_ObjectHideFlags: 0
@@ -13599,3 +13656,4 @@ SceneRoots:
   - {fileID: 852961423}
   - {fileID: 435956441}
   - {fileID: 805169897}
+  - {fileID: 1622183928}
