@@ -60,7 +60,9 @@ public class HarperAtaque : MonoBehaviour
     Sprite spriteNormal;
     float proximoGolpe;
     float finPose;
+    HarperAgachar agachar;   // NUEVO
 
+    // NUEVO (animación): true mientras se muestra la pose de ataque
     public bool EnPose => finPose > 0f;
 
     void Awake()
@@ -71,6 +73,7 @@ public class HarperAtaque : MonoBehaviour
         mov = GetComponent<HarperMovimiento>();
         sr = GetComponentInChildren<SpriteRenderer>();
         if (sr != null) spriteNormal = sr.sprite;
+        agachar = GetComponent<HarperAgachar>();   // NUEVO
     }
 
     void Update()
@@ -84,6 +87,10 @@ public class HarperAtaque : MonoBehaviour
             if (sr != null && spriteNormal != null) sr.sprite = spriteNormal;
             finPose = 0f;
         }
+
+        // NUEVO: agachada o aturdida por un golpe no puede disparar (J) ni usar el especial (K)
+        if (agachar != null && agachar.Agachada) return;
+        if (vida != null && vida.Aturdida) return;
 
         if ((k.jKey.wasPressedThisFrame || k.zKey.wasPressedThisFrame)
             && Time.time >= proximoGolpe)

@@ -1,38 +1,46 @@
 using UnityEngine;
 
-// Anima a Harper cambiando el sprite del SpriteRenderer:
-//  - "Idle" (respirar) cuando está quieta
-//  - "Caminar" cuando se mueve (en X o en Y, como un beat 'em up)
-// Respeta la pose de ataque de HarperAtaque y se detiene cuando Harper muere.
+// Anima a Harper cambiando el sprite del SpriteRenderer. Prioridades:
+//  1. Muerta          -> sprite Herida (y VidaHarper la pinta de gris)
+//  2. Herida          -> sprite Herida durante VidaHarper.duracionHerida (1 s) y luego vuelve
+//  3. Pose de ataque  -> no se toca (la pone HarperAtaque con J/K)
+//  4. Agachada        -> Agacharse (transición) y Agachada (bucle)
+//  5. Caminar / Idle  -> según la velocidad real
 // Va en el mismo GameObject que HarperMovimiento.
-[DefaultExecutionOrder(100)]                 // corre después de HarperMovimiento y HarperAtaque
+[DefaultExecutionOrder(100)]                 // corre después de los demás scripts de Harper
 [RequireComponent(typeof(HarperMovimiento))]
 public class HarperAnimacion : MonoBehaviour
 {
-    [Header("Cuadros (arrástralos en orden desde Harper_Animaciones.aseprite)")]
-    public Sprite[] idle;                    // 4 cuadros
-    public Sprite[] caminar;                 // 8 cuadros
+    [Header("Cuadros (desde Harper_Animaciones.aseprite)")]
+    public Sprite[] idle;          // Frame_0 a Frame_3
+    public Sprite[] caminar;       // Frame_4 a Frame_11
+    public Sprite agacharse;       // Frame_12 (transición)
+    public Sprite[] agachada;      // Frame_13 y Frame_14
+    public Sprite herida;          // Frame_15 (o tu HarperHerida.png)
 
     [Header("Velocidad de la animación")]
-    public float fpsIdle = 4f;               // 250 ms por cuadro, igual que en Aseprite
-    public float fpsCaminar = 12f;           // ~85 ms por cuadro
-    [Tooltip("Si está activo, los pasos van más lentos cuando Harper acelera o frena")]
+    public float fpsIdle = 4f;
+    public float fpsCaminar = 12f;
+    public float fpsAgachada = 8f;      // temblor de miedo (120 ms por cuadro)
+    [Tooltip("Los pasos van más lentos cuando Harper acelera o frena")]
     public bool ajustarAVelocidad = true;
     [Tooltip("Por debajo de esta velocidad (unidades/seg) se considera quieta")]
     public float umbralMovimiento = 0.5f;
 
     HarperMovimiento mov;
     HarperAtaque ataque;
+    HarperAgachar agachar;
+    VidaHarper vida;
     SpriteRenderer sr;
     float t;
-    bool caminando;
-
-    public bool Caminando => caminando;
+    int estado = -1;               // para reiniciar el ciclo al cambiar de estado
 
     void Awake()
     {
         mov = GetComponent<HarperMovimiento>();
         ataque = GetComponent<HarperAtaque>();
+        agachar = GetComponent<HarperAgachar>();
+        vida = GetComponent<VidaHarper>();
         sr = GetComponentInChildren<SpriteRenderer>();
         if (sr == null) Debug.LogWarning("HarperAnimacion: Harper no tiene SpriteRenderer");
     }
@@ -40,22 +48,39 @@ public class HarperAnimacion : MonoBehaviour
     void LateUpdate()
     {
         if (sr == null || mov == null) return;
-        if (!mov.enabled) return;                          // VidaHarper la desactiva al morir
-        if (ataque != null && ataque.EnPose) return;      // no pisar la pose de ataque
+
+        if (vida != null && vida.Muerta) { Poner(herida); return; }
+        if (!mov.enabled) return;
+        if (vida != null && vida.Herida) { Cambiar(1); Poner(herida); return; }
+        if (ataque != null && ataque.EnPose) { Cambiar(2); return; }
+
+        if (agachar != null && agachar.Agachada)
+        {
+            if (agachar.Progreso < 1f) { Cambiar(3); Poner(agacharse); }
+            else { Cambiar(4); Ciclo(agachada, fpsAgachada); }
+            return;
+        }
 
         float v = mov.VelocidadReal.magnitude;
-        bool camina = v > umbralMovimiento;
-        if (camina != caminando) { caminando = camina; t = 0f; }   // reinicia el ciclo al cambiar
+        if (v > umbralMovimiento && caminar != null && caminar.Length > 0)
+        {
+            Cambiar(5);
+            float fps = fpsCaminar;
+            if (ajustarAVelocidad && mov.velocidadMax > 0f)
+                fps *= Mathf.Clamp(v / mov.velocidadMax, 0.5f, 1f);
+            Ciclo(caminar, fps);
+        }
+        else { Cambiar(6); Ciclo(idle, fpsIdle); }
+    }
 
-        Sprite[] cuadros = (caminando && caminar != null && caminar.Length > 0) ? caminar : idle;
+    void Cambiar(int nuevo) { if (nuevo != estado) { estado = nuevo; t = 0f; } }
+
+    void Poner(Sprite s) { if (s != null) sr.sprite = s; }
+
+    void Ciclo(Sprite[] cuadros, float fps)
+    {
         if (cuadros == null || cuadros.Length == 0) return;
-
-        float fps = caminando ? fpsCaminar : fpsIdle;
-        if (caminando && ajustarAVelocidad && mov.velocidadMax > 0f)
-            fps *= Mathf.Clamp(v / mov.velocidadMax, 0.5f, 1f);
-
         t += Time.deltaTime * fps;
-        int i = (int)t % cuadros.Length;
-        if (cuadros[i] != null) sr.sprite = cuadros[i];
+        Poner(cuadros[(int)t % cuadros.Length]);
     }
 }
