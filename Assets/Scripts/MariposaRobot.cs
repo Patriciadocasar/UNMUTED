@@ -63,6 +63,8 @@ public class MariposaRobot : MonoBehaviour
             alturaMin = mov != null ? mov.yMax + 4.5f : c.y + 1f;
             alturaMin = Mathf.Min(alturaMin, alturaMax - 1f);
         }
+        Vector3 p0 = transform.position; p0.z = 0f; transform.position = p0;   // que la cámara la vea
+        Debug.Log(name + " salió en " + transform.position + " y vuela entre Y " + alturaMin.ToString("0.0") + " y " + alturaMax.ToString("0.0"));
         ElegirObjetivo();
         proximoPolvo = Time.time + Random.Range(1.5f, cadaCuantoPolvo + 1.5f);
         tiempo = Random.value * 10f;

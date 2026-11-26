@@ -80,14 +80,14 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -4854789813321336828, guid: d30bec2258722444eac5904a5f97468c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d30bec2258722444eac5904a5f97468c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.24, y: 0.18}
+  m_Size: {x: 2.4, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -106,15 +106,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MariposaRobot
   framesAleteo:
-  - {fileID: -4854789813321336828, guid: d30bec2258722444eac5904a5f97468c, type: 3}
-  - {fileID: 7226455551120341280, guid: 9ec728c245f194d4f9691cae265fc4f5, type: 3}
-  - {fileID: 3748173480574489432, guid: 32e41001e92b61c40b18b5393c63741a, type: 3}
-  - {fileID: -5859617823466612124, guid: a1814cb824d5f004d8bb39d59d79d4ad, type: 3}
-  spriteGolpe: {fileID: 2419709537142073120, guid: fb6de3d33587db0409e2e189655043e4, type: 3}
+  - {fileID: 21300000, guid: d30bec2258722444eac5904a5f97468c, type: 3}
+  - {fileID: 21300000, guid: 9ec728c245f194d4f9691cae265fc4f5, type: 3}
+  - {fileID: 21300000, guid: 32e41001e92b61c40b18b5393c63741a, type: 3}
+  - {fileID: 21300000, guid: a1814cb824d5f004d8bb39d59d79d4ad, type: 3}
+  spriteGolpe: {fileID: 21300000, guid: fb6de3d33587db0409e2e189655043e4, type: 3}
   framesMuerte:
-  - {fileID: -916783885628345955, guid: 2cc5bd35c60cbc846a3f77d1aae387ed, type: 3}
-  - {fileID: 7001388136703359017, guid: 4ea354d5f9fc4914cacd2a638c812b28, type: 3}
-  - {fileID: 6021216932503528544, guid: 0469d00581a03dc4ba3c1287f5484a5d, type: 3}
+  - {fileID: 21300000, guid: 2cc5bd35c60cbc846a3f77d1aae387ed, type: 3}
+  - {fileID: 21300000, guid: 4ea354d5f9fc4914cacd2a638c812b28, type: 3}
+  - {fileID: 21300000, guid: 0469d00581a03dc4ba3c1287f5484a5d, type: 3}
   fpsAleteo: 12
   vida: 2
   velocidad: 3

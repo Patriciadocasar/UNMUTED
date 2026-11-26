@@ -193,12 +193,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 8
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -4949930908119527873, guid: 5cd3388df7a0fda4c987290f32a96e9a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5cd3388df7a0fda4c987290f32a96e9a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5, y: 3.2}
+  m_Size: {x: 4.8, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EfectoAnimado
   frames:
-  - {fileID: -4949930908119527873, guid: 5cd3388df7a0fda4c987290f32a96e9a, type: 3}
+  - {fileID: 21300000, guid: 5cd3388df7a0fda4c987290f32a96e9a, type: 3}
   - {fileID: 21300000, guid: 70cc08d8a31e81f43a158ebba80e621b, type: 3}
   - {fileID: 21300000, guid: 3abbdbf4bed802a49bcdde2cd374f4b9, type: 3}
   fps: 12
