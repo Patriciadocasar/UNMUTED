@@ -1691,7 +1691,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6116059656706494344, guid: 0a7b6d04b4779ba4e9345fc86f7cb7e3, type: 3}
       propertyPath: duracionFundido
-      value: 16
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8925564938693491613, guid: 0a7b6d04b4779ba4e9345fc86f7cb7e3, type: 3}
       propertyPath: m_Name

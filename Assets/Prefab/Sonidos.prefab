@@ -46,6 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Sonidos
   cancion: {fileID: 8300000, guid: e013e19b2e5c88240bc15334a2c0fa7f, type: 3}
   volumenMusica: 0.25
-  duracionFundido: 12
-  volumenInicial: 0.02
+  duracionFundido: 5
+  volumenInicial: 0.1
   volumenEfectos: 0.2
