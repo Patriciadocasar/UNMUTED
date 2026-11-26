@@ -17,9 +17,20 @@ public class VidaHarper : MonoBehaviour
     public AudioClip sonidoGolpe;            // cuando la golpean
     public AudioClip sonidoMuerte;           // cuando pierde
 
+    [Header("Reacción al golpe (sprite HarperHerida)")]
+    public float duracionHerida = 0.3f;        // NUEVO: segundos con la cara de dolor
+    public bool quietaMientrasHerida = true; // NUEVO: no camina ni ataca durante ese segundo
+
     SpriteRenderer sr;
     float hasta;
     bool muerta;
+    float finHerida;                         // NUEVO
+
+    // NUEVO: los usan HarperAnimacion, HarperMovimiento, HarperAtaque y HarperAgachar
+    public bool Muerta => muerta;
+    public bool Herida => !muerta && Time.time < finHerida;
+    public bool Aturdida => quietaMientrasHerida && Herida;
+    public event System.Action AlSerGolpeada;
 
     void Awake()
     {
@@ -33,6 +44,8 @@ public class VidaHarper : MonoBehaviour
         if (muerta || Time.time < hasta) return false;   // invulnerable: el golpe no cuenta
         Actual = Mathf.Max(0, Actual - d);
         hasta = Time.time + invulnerable;
+        finHerida = Time.time + duracionHerida;   
+        AlSerGolpeada?.Invoke();                  
 
         // Destello de golpe sobre Harper
         if (prefabGolpeRecibido != null)
@@ -41,6 +54,36 @@ public class VidaHarper : MonoBehaviour
         if (Actual <= 0) { Sonidos.Tocar(sonidoMuerte); StartCoroutine(Morir()); }
         else { Sonidos.Tocar(sonidoGolpe); StartCoroutine(Parpadeo()); }
         return true;
+    }
+
+    // Poder del Fandom: recupera vida
+    public void Curar(int cantidad) => Curar(cantidad, new Color(0.75f, 0.55f, 1f));   // destello morado
+
+    // El corazón de los comodines usa un destello rosado
+    public void Curar(int cantidad, Color colorBrillo)
+    {
+        if (muerta) return;
+        Actual = Mathf.Min(vidaMax, Actual + cantidad);
+        StartCoroutine(Brillo(colorBrillo, 0.8f));
+    }
+
+    // Escudo de Estrellas: no le pasa nada por unos segundos
+    public void HacerInvencible(float segundos)
+    {
+        if (muerta) return;
+        hasta = Mathf.Max(hasta, Time.time + segundos);
+        StartCoroutine(Brillo(new Color(1f, 0.85f, 0.3f), segundos));  // brilla dorado
+    }
+
+    IEnumerator Brillo(Color color, float segundos)
+    {
+        float fin = Time.time + segundos;
+        while (Time.time < fin)
+        {
+            if (sr != null) sr.color = Color.Lerp(Color.white, color, (Mathf.Sin(Time.time * 12f) + 1f) * 0.5f);
+            yield return null;
+        }
+        if (sr != null && !muerta) sr.color = Color.white;
     }
 
     IEnumerator Parpadeo()
