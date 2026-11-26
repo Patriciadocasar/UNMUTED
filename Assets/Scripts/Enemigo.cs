@@ -55,6 +55,12 @@ public class Enemigo : MonoBehaviour
     int dirHacia = -1;
     float proximoDisparo, finAturdido;
 
+    // Para robots con su propio "cerebro" (como el Aspirabot): este script solo se encarga
+    // de la vida, la animación, los golpes y el baile; el movimiento lo decide el otro script.
+    [HideInInspector] public bool controlExterno;
+    [HideInInspector] public Vector2 moverExterno;
+    public bool Aturdido => Time.time < finAturdido;
+
     [Header("Volador (el Silenciador)")]
     public bool volador = false;            // ✅ = vuela libre por la escena y dispara apuntando a Harper
     public float alturaVueloMax = 7.5f;     // hasta dónde puede subir (para que Harper igual le alcance)
@@ -176,6 +182,7 @@ public class Enemigo : MonoBehaviour
 
         if (Time.time < finAturdido) return;   // aturdido: no se mueve ni dispara
 
+        if (controlExterno) return;
         if (volador) { Volar(); return; }
         if (picada) { ActualizarPicada(); return; }
 
@@ -202,6 +209,8 @@ public class Enemigo : MonoBehaviour
             if (Mathf.Abs(nx - xDestinoEntrada) < 0.01f) entrando = false;
             return;
         }
+
+        if (controlExterno && !Bailando && !Aturdido) mover = moverExterno;
 
         if (picada)
         {

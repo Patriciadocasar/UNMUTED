@@ -52,6 +52,10 @@ public class HarperAtaque : MonoBehaviour
 
     [Header("Escudo de Estrellas (Aitana)")]
     public float duracionEscudo = 5f;
+    public float cadaCuantoEstrella = 0.35f;   // mientras dura el escudo, sale una estrella cada tanto
+    public int danoEstrella = 1;               // las estrellas SOLO le hacen daño a las mariposas
+    public float velocidadEstrellas = 10f;
+    public Sprite[] framesEscudo;              // la burbuja de pixel art (si lo dejas vacío, se dibuja una sencilla)
     public GameObject prefabEscudo;            // efecto opcional sobre Harper
     public AudioClip sonidoEscudo;
 
@@ -274,6 +278,18 @@ public class HarperAtaque : MonoBehaviour
         if (prefabEscudo != null)
             Instantiate(prefabEscudo, transform.position + Vector3.up * alturaEfecto, Quaternion.identity);
         if (vida != null) vida.HacerInvencible(duracionEscudo);
+        StartCoroutine(DispararEstrellas());
+        EscudoVisual.Mostrar(transform, alturaEfecto, duracionEscudo, framesEscudo);
+    }
+
+    IEnumerator DispararEstrellas()
+    {
+        float fin = Time.time + duracionEscudo;
+        while (Time.time < fin)
+        {
+            EstrellaEscudo.Lanzar(transform.position + Vector3.up * alturaEfecto, danoEstrella, velocidadEstrellas);
+            yield return new WaitForSeconds(cadaCuantoEstrella);
+        }
     }
 
     // Muestra en la Scene de dónde sale el poder (círculo amarillo)

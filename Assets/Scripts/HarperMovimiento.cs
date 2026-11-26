@@ -23,6 +23,12 @@ public class HarperMovimiento : MonoBehaviour
 
     public int Direccion => (sr != null && sr.flipX) ? -1 : 1;
 
+    // NUEVO (Aspirabot): fuerzas que mueven a Harper sin que ella quiera
+    [HideInInspector] public Vector2 fuerzaExterna;   // la succión la pone cada cuadro
+    Vector2 empujon;                                   // un empujón que se va frenando
+
+    public void Empujar(Vector2 fuerza) { empujon = fuerza; }
+
     // NUEVO (animación): velocidad real después de chocar con los límites del piso.
     public Vector2 VelocidadReal { get; private set; }
 
@@ -75,7 +81,9 @@ public class HarperMovimiento : MonoBehaviour
         );
 
         // 4. Aplicamos el movimiento usando la inercia calculada
-        Vector2 p = rb.position + velocidadActual * Time.fixedDeltaTime;
+        Vector2 p = rb.position + (velocidadActual + fuerzaExterna + empujon) * Time.fixedDeltaTime;
+        fuerzaExterna = Vector2.zero;
+        empujon = Vector2.MoveTowards(empujon, Vector2.zero, 60f * Time.fixedDeltaTime);
         p.x = Mathf.Clamp(p.x, xMin, xMax);
         p.y = Mathf.Clamp(p.y, yMin, yMax);
 
