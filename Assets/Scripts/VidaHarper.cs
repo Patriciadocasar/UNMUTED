@@ -105,6 +105,6 @@ public class VidaHarper : MonoBehaviour
         if (sr != null) { sr.enabled = true; sr.color = new Color(0.45f, 0.5f, 0.55f); }  // se vuelve gris, sin alma
 
         yield return new WaitForSeconds(retrasoReinicio);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);   // reinicia el nivel
+        Transicion.Reiniciar();   // reinicia el nivel con fundido a negro
     }
 }
