@@ -261,7 +261,11 @@ MonoBehaviour:
   cadencia: 2.5
   retrasoInicial: 1.2
   toleranciaCarril: 1
-  framesMovimiento: []
+  framesMovimiento:
+  - {fileID: 21300000, guid: a2cfd2877f8884c439e1070d7875df47, type: 3}
+  - {fileID: 21300000, guid: bf8b77b0e33f0dc46a55a9b8389bd8f5, type: 3}
+  - {fileID: 21300000, guid: 7b52c069a5e8e354e8f5a0f158f5db30, type: 3}
+  - {fileID: 21300000, guid: a5fe14bbe3400054ea321db027f30f82, type: 3}
   fpsMovimiento: 8
   spriteGolpe1: {fileID: 21300000, guid: ce86f9650d5c3cf40acbddec7639e266, type: 3}
   spriteGolpe2: {fileID: 21300000, guid: f2f20316064440842b23286be092f119, type: 3}
