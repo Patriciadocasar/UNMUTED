@@ -59,7 +59,7 @@ public class ControlNivel : MonoBehaviour
 
         yield return new WaitForSeconds(esperaAntesDeCambiar);
 
-        if (hayOtroNivel) SceneManager.LoadScene(siguiente);
+        if (hayOtroNivel) Transicion.IrA(siguiente);
         else Debug.Log("¡Era el último nivel de la lista!");
     }
 

@@ -1918,11 +1918,11 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 4195df99caea6be4181805db256cdf02, type: 3}
     - target: {fileID: 6116059656706494344, guid: 0a7b6d04b4779ba4e9345fc86f7cb7e3, type: 3}
       propertyPath: volumenMusica
-      value: 0.35
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 6116059656706494344, guid: 0a7b6d04b4779ba4e9345fc86f7cb7e3, type: 3}
       propertyPath: volumenEfectos
-      value: 0.1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8925564938693491613, guid: 0a7b6d04b4779ba4e9345fc86f7cb7e3, type: 3}
       propertyPath: m_Name
@@ -11777,7 +11777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TituloNivel
   imagen: {fileID: 21300000, guid: d413c886f5081b1459405e14b98896e2, type: 3}
-  duracion: 2.5
+  duracion: 4
   fundido: 0.4
   pausarJuego: 1
 --- !u!4 &1995854059

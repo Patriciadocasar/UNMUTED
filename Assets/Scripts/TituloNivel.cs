@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
-
 public class TituloNivel : MonoBehaviour
 {
     public Sprite imagen;
@@ -13,7 +12,12 @@ public class TituloNivel : MonoBehaviour
 
     void Start()
     {
-        if (imagen == null) { Debug.LogWarning("TituloNivel: falta la imagen"); return; }
+        if (imagen == null)
+        {
+            Debug.LogWarning("TituloNivel: falta la imagen");
+            if (Sonidos.instancia != null) Sonidos.instancia.IniciarFundido();
+            return;
+        }
         StartCoroutine(Mostrar());
     }
 
@@ -42,9 +46,16 @@ public class TituloNivel : MonoBehaviour
         float escalaPrevia = Time.timeScale;
         if (pausarJuego) Time.timeScale = 0f;
 
-        for (float t = 0; t < fundido; t += Time.unscaledDeltaTime)
-        { grupo.alpha = t / fundido; yield return null; }
-        grupo.alpha = 1;
+                if (Transicion.HayOverlay)
+        {
+            grupo.alpha = 1;   // ya viene del negro: el título está listo
+        }
+        else
+        {
+            for (float t = 0; t < fundido; t += Time.unscaledDeltaTime)
+            { grupo.alpha = t / fundido; yield return null; }
+            grupo.alpha = 1;
+        }
 
         float espera = 0;
         while (espera < duracion && !Saltar())
@@ -54,6 +65,7 @@ public class TituloNivel : MonoBehaviour
         { grupo.alpha = 1 - t / fundido; yield return null; }
 
         if (pausarJuego) Time.timeScale = escalaPrevia > 0 ? escalaPrevia : 1f;
+        if (Sonidos.instancia != null) Sonidos.instancia.IniciarFundido();
         Destroy(lienzo);
     }
 

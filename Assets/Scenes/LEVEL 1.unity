@@ -9632,7 +9632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TituloNivel
   imagen: {fileID: 21300000, guid: 2f42356ebf5b21845a90c4fcf6d0a3ad, type: 3}
-  duracion: 2.5
+  duracion: 4
   fundido: 0.4
   pausarJuego: 1
 --- !u!4 &1968104158
@@ -10183,11 +10183,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6116059656706494344, guid: 0a7b6d04b4779ba4e9345fc86f7cb7e3, type: 3}
       propertyPath: volumenMusica
-      value: 0.35
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 6116059656706494344, guid: 0a7b6d04b4779ba4e9345fc86f7cb7e3, type: 3}
       propertyPath: volumenEfectos
-      value: 0.1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8925564938693491613, guid: 0a7b6d04b4779ba4e9345fc86f7cb7e3, type: 3}
       propertyPath: m_Name

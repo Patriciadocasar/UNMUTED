@@ -56,7 +56,8 @@ public class HarperAtaque : MonoBehaviour
     public AudioClip sonidoEscudo;
 
     [Header("Sonidos")]
-    public AudioClip sonidoDisparo;      // cada golpe básico
+    public AudioClip sonidoDisparo; 
+    [Range(0f, 1f)] public float volumenDisparo = 0.5f;     // cada golpe básico
     public AudioClip sonidoAcorde;       // el Acorde Explosivo
 
     EnergiaSonica energia;
@@ -121,7 +122,7 @@ public class HarperAtaque : MonoBehaviour
     void AtaqueBasico()
     {
         proximoGolpe = Time.time + cooldown;
-        Sonidos.Tocar(sonidoDisparo);
+        Sonidos.Tocar(sonidoDisparo, volumenDisparo);   
         energia.Sumar(energiaPorGolpe);
         PonerPose();
 

@@ -238,10 +238,10 @@ public class TutorialManager : MonoBehaviour
         if (terminando) return;
         terminando = true;
 
-        if (!string.IsNullOrEmpty(escenaSiguiente)) { SceneManager.LoadScene(escenaSiguiente); return; }
+        if (!string.IsNullOrEmpty(escenaSiguiente)) { Transicion.IrA(escenaSiguiente); return; }
 
         int siguiente = SceneManager.GetActiveScene().buildIndex + 1;
-        if (siguiente < SceneManager.sceneCountInBuildSettings) SceneManager.LoadScene(siguiente);
+        if (siguiente < SceneManager.sceneCountInBuildSettings) Transicion.IrA(siguiente);
         else Debug.LogWarning("Tutorial: no hay una escena siguiente en Build Profiles (¿agregaste TUTORIAL y LEVEL 1 a la lista?)");
     }
 
