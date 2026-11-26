@@ -64,7 +64,9 @@ public class EfectoAnimado : MonoBehaviour
     }
 
     // Más fácil de acertar si el robot está mareado bailando
-    float ToleranciaPara(Enemigo e) => e.Bailando ? toleranciaCarril * 1.6f : toleranciaCarril;
+    float ToleranciaPara(Enemigo e) =>
+        e.EstaMareado ? toleranciaCarril * 2.2f :     // Robot Espejo en el piso: le pegas aunque estés más arriba o más abajo
+        e.Bailando    ? toleranciaCarril * 1.6f : toleranciaCarril;
 
     void Update()
     {
@@ -115,6 +117,7 @@ public class EfectoAnimado : MonoBehaviour
         float maxX = Mathf.Max(xAntes, xAhora) + tamanoHit.x / 2f;
         foreach (var e in FindObjectsByType<Enemigo>())
         {
+            if (e.Invulnerable) continue;   // el Robot Espejo arriba: el golpe lo atraviesa
             var col = e.GetComponentInChildren<Collider2D>();
 
             // Cuenta si está en el mismo carril que Harper... o si el golpe pasa visualmente por su cuerpo

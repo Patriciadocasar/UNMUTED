@@ -94,6 +94,7 @@ public class NotaCoro : MonoBehaviour
         // ¿Tocó a algún robot?
         foreach (var e in FindObjectsByType<Enemigo>())
         {
+            if (e.Invulnerable) continue;
             var col = e.GetComponentInChildren<Collider2D>();
             if (col == null) continue;
             var caja = col.bounds; caja.Expand(0.3f);
